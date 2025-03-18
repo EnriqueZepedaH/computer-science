@@ -110,7 +110,7 @@ just remember that you can't purchase success!
 
 ---
 
-## Prerequisites
+## ✅ Prerequisites
 
 - [Core CS](#core-cs) assumes the student has already taken [high school math](https://github.com/ossu/computer-science/blob/master/FAQ.md#how-can-i-review-the-math-prerequisites), including algebra, geometry, and pre-calculus.
 - [Advanced CS](#advanced-cs) assumes the student has already taken the entirety of Core CS
