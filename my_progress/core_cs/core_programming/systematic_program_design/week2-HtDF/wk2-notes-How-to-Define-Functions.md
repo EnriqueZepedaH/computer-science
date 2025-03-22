@@ -48,29 +48,42 @@ A **signature** has the type of each argument, separated by spaces, followed by 
 ; <Type> <Type> ... -> <Type>
 ```
 
+**Purpose**
+
+A good **purpose** statement is a concise one-liner that states what the function produces in terms of its inputs.
+
+```
+;; produces twice the given number
+```
+
 **Stub**
 
-The **stub** is a syntactically complete function definition that produces a value of the right type. If the type is Number it is common to use 0, if the type is String it is common to use "a" and so on. The value will not, in general, match the purpose statement. In the example below the stub produces 0, which is a Number, but only matches the purpose when double happens to be called with 0.
+The **stub** is a syntactically complete function definition that:
+- has the correct function name
+- has the correct number of parameters (or inputs)
+- produces a dummy value of the right type. 
 
+If the type is `Number` it is common to use `0`, if the type is `String` it is common to use `"a"` and so on. The value will not, in general, match the purpose statement. 
 
 **Signature, purpose and stub example**
 
+In the example below the stub produces 0, which is a Number, but only matches the purpose when double happens to be called with 0.
+
 ```
 ;; Number -> Number
-;; produces n times 2
+;; produces twice the given number
 
 (define (double n)  0)  ; this is the stub
 ```
 
-
-The purpose of the stub is to serve as a kind of scaffolding to make it possible to run the examples even before the function design is complete. With the stub in place check-expects that call the function can run. Most of them will fail of course, but the fact that they can run at all allows you to ensure that they are at least well-formed: parentheses are balanced, function calls have the proper number of arguments, function and constant names are correct and so on. This is very important, the sooner you find a mistake -- even a simple one -- the easier it is to fix.
+Note: The purpose of the **stub** is to serve as a kind of scaffolding to make it possible to run the examples even before the function design is complete. With the stub in place check-expects that call the function can run. Most of them will fail of course, but the fact that they can run at all allows you to ensure that they are at least well-formed: parentheses are balanced, function calls have the proper number of arguments, function and constant names are correct and so on. This is very important, the sooner you find a mistake -- even a simple one -- the easier it is to fix.
 
 
 ### Step 2: Define examples, wrap each one in check-expect.
 
-Write at least one example of a call to the function and the expected result the call should produce.
+In this step we write at least one example of a call to the function and the expected result the call should produce. This step can also be seen as designing simple unit tests.
 
-You will often need more examples, to help you better understand the function or to properly test the function. (If once your function works and you run the program some of the code is highlighted in black it means you definitely do not have enough examples.) If you are unsure how to start writing examples use the combination of the function signature and the data definition(s) to help you generate examples. Often the example data from the data definition is useful, but it does not necessarily cover all the important cases for a particular function.
+You will often need more examples, to help you better understand the function or to properly test the function.
 
 The first role of an example is to help you understand what the function is supposed to do. If there are boundary conditions be sure to include an example of them. If there are different behaviours the function should have, include an example of each. Since they are examples first, you could write them in this form:
 
@@ -87,7 +100,7 @@ When you write examples it is sometimes helpful to write not just the expected r
 ;; (double 2) should produce (* 2 2)
 ```
 
-While the above form satisfies our need for examples, DrRacket gives us a better way to write them, by enclosing them in check-expect. This will allow DrRacket to check them automatically when the function is complete. (In technical terms it will turn the examples into unit tests.)
+While the above form satisfies our need for examples, DrRacket gives us a better way to write them, by enclosing them in check-expect. This will allow DrRacket to check them automatically when the function is complete. (In technical terms it will turn the examples into unit tests.) *In other programming languages these also exist. In Python you can use [doctest](https://docs.python.org/es/3.13/library/doctest.html) library.*
 
 ```
 ;; Number -> Number
@@ -112,6 +125,7 @@ For primitive data like numbers, strings and images the body of the template is 
 
 Once the template is done the stub should be commented out.
 
+```
 ;; Number -> Number
 ;; produces n times 2
 (check-expect (double 0) (* 0 2))
@@ -122,6 +136,8 @@ Once the template is done the stub should be commented out.
 
 (define (double n)     ; this is the template
   (... n))
+```
+
 It is also often useful to add constant values which are extremely likely to be useful to the template body at this point. For example, the template for a function that renders the state of a world program might have an MTS constant added to its body. This causes the template to include an inventory of useful constants.
 
 
