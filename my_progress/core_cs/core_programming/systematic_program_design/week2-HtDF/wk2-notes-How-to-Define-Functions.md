@@ -170,6 +170,3 @@ You should use all of the above to help you code the function body. In some case
 
 ### Step 5: Test and debug until correct
 Run the program and make sure all the tests pass, if not debug until they do. Many of the problems you might have had will already have been fixed because of following the "run early, run often" approach. But if not, debug until everything works.
-
-## How To Design Data (HTDD)
-
